@@ -1,8 +1,8 @@
 import React from 'react';
 import ErrorMessage from './ErrorMessage';
 import { useForm } from 'react-hook-form';
-import axios from "axios";
-import { useHistory } from "react-router-dom";
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Register = () => {
 	const {
@@ -13,21 +13,22 @@ const Register = () => {
 		register,
 		triggerValidation
 	} = useForm();
-	const baseUrl = "https://bw-pic-metric.herokuapp.com/api";
+	const baseUrl = 'https://bw-pic-metric.herokuapp.com/api';
 	const routerHistory = useHistory();
 	const onSubmit = data => {
 		axios
-			.post(baseUrl + "/auth/register", {
-				full_name: data.firstName + " " + data.lastName,
+			.post(baseUrl + '/auth/register', {
+				full_name: data.firstName + ' ' + data.lastName,
 				email: data.email,
-				password: data.password })
+				password: data.password
+			})
 			.then(res => {
-				routerHistory.push("/login");
+				routerHistory.push('/login');
 			})
 			.catch(err => {
-				console.log("Registration Error: " + err.response.data.error.message); // Michael: surface this in the UI
+				console.log('Registration Error: ' + err.response.data.error.message); // Michael: surface this in the UI
 			});
-	}
+	};
 	console.log(errors);
 
 	const verifyPassword = repeatPassword =>
