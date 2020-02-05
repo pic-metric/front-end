@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ErrorMessage from './ErrorMessage';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -13,6 +13,7 @@ const Register = () => {
 		register,
 		triggerValidation
 	} = useForm();
+	const [RegisterError, setRegisterError] = useState();
 	const baseUrl = 'https://bw-pic-metric.herokuapp.com/api';
 	const routerHistory = useHistory();
 	const onSubmit = data => {
@@ -26,7 +27,7 @@ const Register = () => {
 				routerHistory.push('/login');
 			})
 			.catch(err => {
-				console.log('Registration Error: ' + err.response.data.error.message); // Michael: surface this in the UI
+				setRegisterError('Registration Error: ' + err.response.data.error.message);
 			});
 	};
 	console.log(errors);
@@ -94,6 +95,7 @@ const Register = () => {
 				{errors.repeatPassword && <p>{errors.repeatPassword.message}</p>}
 
 				<input type='submit' />
+				<div>{RegisterError}</div>
 			</form>
 		</div>
 	);

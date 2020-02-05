@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ErrorMessage from './ErrorMessage';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 const Login = () => {
 	const { register, handleSubmit, errors } = useForm();
+	const [loginError, setLoginError] = useState();
 	const baseUrl = 'https://bw-pic-metric.herokuapp.com/api';
 	const routerHistory = useHistory();
 	const onSubmit = data => {
@@ -19,7 +20,7 @@ const Login = () => {
 				routerHistory.push('/picmetric');
 			})
 			.catch(err => {
-				console.log('Login Error: ' + err.response.data.error.message); // Michael: surface this in the UI
+				setLoginError('Login Error: ' + err.response.data.error.message);
 			});
 	};
 	console.log(errors);
@@ -48,6 +49,7 @@ const Login = () => {
 				<ErrorMessage error={errors.password} />
 
 				<input type='submit' />
+				<div>{loginError}</div>
 			</form>
 			<div>
 				{'Not registered? '}
