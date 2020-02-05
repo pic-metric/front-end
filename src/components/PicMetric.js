@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const fakeData = [
   {
@@ -25,30 +26,79 @@ const fakeData = [
 
 const PicMetric = () => {
   const [imageInfo, setImageInfo] = useState();
+  const [uploadData, setUploadData] = useState();
   
   useEffect(() => {
     setImageInfo(fakeData);
   }, [fakeData]);
 
+  useEffect(() => {
+    if (uploadData) {
+      const uploadIcon = document.getElementById("uploadIcon");
+      const iconTimer = setInterval(() => {
+        uploadIcon.style.visibility === "visible" ? 
+          uploadIcon.style.visibility = "hidden" : uploadIcon.style.visibility = "visible";
+      }, 250);
+
+      setTimeout(() =>  {
+        document.getElementById("uploadIcon").style.visibility = "visible";
+        clearInterval(iconTimer);
+      }, 3000);
+
+      uploadIcon.style.visibility = "hidden";
+      uploadIcon.style.fill = "green";
+    }
+  }, [uploadData])
+
   const handleDelete = itemId => {
     console.log("Delete:", itemId);
   }
 
-  const handleAdd = () => {
-    console.log("Add:", document.getElementById("addUrl").value);
+  const handleAnalyize = () => {
+    if (!uploadData) {
+      alert("Select a file before Analyize");
+    }
+    console.log("Analyize:", uploadData);
+
+    axiosWithAuth()
+      .post("/pics", uploadData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(res => console.log("uploadData OK", res))
+      .catch(err => console.log("uploadData FAIL", err));
+  }
+
+  const handleImageChange = () => {
+    if (document.getElementById("imageUpload").files.length === 1) {
+      setUploadData(document.getElementById("imageUpload").files[0]);
+    }
+    else {
+      setUploadData();
+    }
   }
   
   return (
     !imageInfo ? <div>Loading...</div> :
     <div>
-      <div>
-        <input type="text" id="addUrl" style={{ marginTop: "10px" }} />
-        <input onClick={handleAdd} type="submit" value="Add Image" style={{ marginTop: "0px" }} />
+      <div style={{ display: "flex", marginTop: "10px", justifyContent: "space-between", alignItems: "center" }}>
+        <label type="button" htmlFor="imageUpload" style={{ width: "40%", margin: "0px" }}>Select</label>
+        <div style={{ width: "50px", height: "50px" }}>  
+          <svg id="uploadIcon" viewBox="0 0 44 44" style={ !uploadData ? { fill: "red" } : { fill: "green" }}>
+            <path d="M26.29,29.29a1,1,0,0,0,1.41,1.41l8-8a1,1,0,0,0,0-1.41l-8-8a1,1,0,1,0-1.41,1.41L32.59,21H1a1,1,0,0,0,0,2H32.59ZM43,0H7A1,1,0,0,0,6,1V16a1,1,0,0,0,2,0V2H42V42H8V28a1,1,0,0,0-2,0V43a1,1,0,0,0,1,1H43a1,1,0,0,0,1-1V1A1,1,0,0,0,43,0Z"/>
+          </svg>
+        </div>
+        <input onClick={handleAnalyize} type="submit" value="Analyize" style={{ margin: "0px", width: "40%" }} />
+        <input type="file" id="imageUpload" onChange={handleImageChange} accept=".jpg,.png" style={{ display: "none" }} />
+      </div>
+      <div style={{ textAlign: "center", marginTop: "5px" }}>
+        Select an image from your computer, then click Analyize.
       </div>
       { 
         imageInfo.map(i => { return (
           <div style={{ display: "flex", border: "1px solid black", marginTop: "10px", marginBottom: "10px", padding: "10px" }} key={i.id}>
-            <img src={i.image_url} style={{ width: "500px", border: "1px solid black" }} />
+            <img src={i.image_url} style={{ width: "450px", border: "1px solid black" }} />
             <div style={{ display: "flex", flexDirection: "column", width: "100%", marginLeft: "10px" }}>
               <div style={{ flexGrow: "1" }}>
                 {

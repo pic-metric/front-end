@@ -27,7 +27,7 @@ p {
 	color: #e11061;
 }
 
-input {
+input,label[type='button'] {
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
@@ -49,7 +49,7 @@ label {
 	line-height: 2;
 }
 
-input[type='submit'] {
+input[type='submit'],label[type='button'] {
 	background: #bababa;
 	color: #ffffff;
 	border: none;
@@ -61,6 +61,12 @@ input[type='submit'] {
 	text-transform: uppercase;
 }
 
-input[type='submit']:hover {
+input[type='submit']:hover,label[type='button']:hover {
 	background: #e11061;
+}
+
+label[type='button'] {
+	line-height: normal;
+	text-align: center;
+	margin-top: 0rem;
 }
