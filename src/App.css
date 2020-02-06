@@ -88,7 +88,7 @@ input[type='text'] {
 	border-top-style: hidden;
 	border-right-style: hidden;
 	border-left-style: hidden;
-	border-bottom: groove #e11061;
+	border-bottom: 0.2rem groove #bababa;
 	outline:none;
 	
 }
