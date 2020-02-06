@@ -4,11 +4,6 @@
 	color: #a9a9a9;
 }
 
-.loginCard {
-	display: flex;
-	justify-content: center;
-}
-
 body {
 	background: #f3f2f2;
 	font-family: 'Segoe UI', sans-serif;
@@ -31,6 +26,17 @@ p {
 	color: #e11061;
 }
 
+label {
+	text-align: left;
+	display: block;
+	margin-bottom: 1.3rem;
+	margin-top: 1.8rem;
+	color: #6e6e6e;
+	font-size: 1.3rem;
+	font-weight: 100;
+	line-height: 2;
+}
+
 input,
 label[type='button'] {
 	display: block;
@@ -41,17 +47,6 @@ label[type='button'] {
 	border-radius: 0.3rem;
 	border: 1px solid #a9a9a9;
 	margin-bottom: 1rem;
-}
-
-label {
-	text-align: left;
-	display: block;
-	margin-bottom: 1.3rem;
-	margin-top: 1.8rem;
-	color: #6e6e6e;
-	font-size: 1.3rem;
-	font-weight: 100;
-	line-height: 2;
 }
 
 input[type='submit'],
@@ -65,18 +60,35 @@ label[type='button'] {
 	font-weight: 100;
 	letter-spacing: 1rem;
 	text-transform: uppercase;
-		cursor: pointer;
-
+	cursor: pointer;
 }
 
 input[type='submit']:hover,
 label[type='button']:hover {
 	background: #e11061;
-	transition: .5s;
+	transition: 0.5s;
 }
 
 label[type='button'] {
 	line-height: normal;
 	text-align: center;
 	margin-top: 0rem;
+}
+
+/* className styles */
+
+.loginCard {
+	display: flex;
+	justify-content: center;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'] {
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom: groove #e11061;
+	outline:none;
+	
 }

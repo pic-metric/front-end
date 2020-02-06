@@ -39,9 +39,9 @@ const Login = () => {
 
 						<h1>PicMetric</h1>
 <div>
-						<form onSubmit={handleSubmit(onSubmit)}>
+						<form className='loginForm' onSubmit={handleSubmit(onSubmit)}>
 							<label>Email</label>
-							<input
+							<input className='formFields'
 								type='email'
 								name='email'
 								placeholder=''
@@ -50,7 +50,7 @@ const Login = () => {
 							<ErrorMessage error={errors.email} />
 
 							<label>Password</label>
-							<input
+							<input className='formFields'
 								type='password'
 								name='password'
 								placeholder=''
