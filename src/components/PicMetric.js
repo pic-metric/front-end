@@ -59,14 +59,13 @@ const PicMetric = () => {
     if (!uploadData) {
       alert("Select a file before Analyze");
     }
-    console.log("Analyze:", uploadData);
+    
+    const formData = new FormData();
+
+    formData.append("pic", uploadData);
 
     axiosWithAuth()
-      .post("/pics/" + userId, uploadData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
+      .post("/pics/" + userId, formData)
       .then(res => console.log("uploadData OK", res))
       .catch(err => console.log("uploadData FAIL", err));
   }
@@ -83,7 +82,7 @@ const PicMetric = () => {
   return (
     !imageInfo ? <div>Loading...</div> :
     <div>
-      <div style={{ display: "flex", marginTop: "10px", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={{ display: "flex", marginTop: "10px", justifyContent: "space-between", alignItems: "center" }}>        
         <label type="button" htmlFor="imageUpload" style={{ width: "40%", margin: "0px" }}>Select</label>
         <div style={{ width: "50px", height: "50px" }}>  
           <svg id="uploadIcon" viewBox="0 0 44 44" style={ !uploadData ? { fill: "red" } : { fill: "green" }}>
@@ -91,7 +90,7 @@ const PicMetric = () => {
           </svg>
         </div>
         <input onClick={handleAnalyze} type="submit" value="Analyze" style={{ margin: "0px", width: "40%" }} />
-        <input type="file" id="imageUpload" name="pic" onChange={handleImageChange} accept=".jpg,.png" style={{ display: "none" }} />
+        <input type="file" id="imageUpload" onChange={handleImageChange} accept=".jpg,.png" style={{ display: "none" }} />
       </div>
       <div style={{ textAlign: "center", marginTop: "5px" }}>
         Select an image from your computer, then click Analyze.
