@@ -1,17 +1,21 @@
 .App {
 	height: 100%;
-	max-width: 54rem;
 	margin: 0 auto;
 	color: #a9a9a9;
 }
 
+.loginCard {
+	display: flex;
+	justify-content: center;
+}
+
 body {
 	background: #f3f2f2;
-	font-family: 'Helvetica Neue', 'Segoe UI', 'Ubuntu', sans-serif;
+	font-family: 'Segoe UI', sans-serif;
 }
 
 form {
-	max-width: 50rem;
+	width: 45rem;
 	margin: 0 auto;
 }
 
@@ -27,7 +31,8 @@ p {
 	color: #e11061;
 }
 
-input,label[type='button'] {
+input,
+label[type='button'] {
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
@@ -49,7 +54,8 @@ label {
 	line-height: 2;
 }
 
-input[type='submit'],label[type='button'] {
+input[type='submit'],
+label[type='button'] {
 	background: #bababa;
 	color: #ffffff;
 	border: none;
@@ -59,10 +65,14 @@ input[type='submit'],label[type='button'] {
 	font-weight: 100;
 	letter-spacing: 1rem;
 	text-transform: uppercase;
+		cursor: pointer;
+
 }
 
-input[type='submit']:hover,label[type='button']:hover {
+input[type='submit']:hover,
+label[type='button']:hover {
 	background: #e11061;
+	transition: .5s;
 }
 
 label[type='button'] {

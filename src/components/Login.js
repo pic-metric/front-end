@@ -3,6 +3,7 @@ import ErrorMessage from './ErrorMessage';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { Box } from 'grommet';
 
 const Login = () => {
 	const { register, handleSubmit, errors } = useForm();
@@ -26,45 +27,57 @@ const Login = () => {
 	console.log(errors);
 
 	return (
-		<div>
-			<h1>Sign In</h1>
-
-			<form className='loginForm' onSubmit={handleSubmit(onSubmit)}>
-				<label>Email</label>
-				<input
-					type='email'
-					name='email'
-					placeholder=''
-					ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-				/>
-				<ErrorMessage error={errors.email} />
-
-				<label>Password</label>
-				<input
-					type='password'
-					name='password'
-					placeholder=''
-					ref={register({ required: true })}
-				/>
-				<ErrorMessage error={errors.password} />
-
-				<input type='submit' />
-				<div>{loginError}</div>
-			</form>
-			<div>
-				{'Not registered? '}
-				<span
-					style={{
-						cursor: 'pointer',
-						color: 'blue',
-						textDecoration: 'underline'
-					}}
-					onClick={e => routerHistory.push('/register')}
+		<section className='loginCard'>
+			<Box margin='8rem' elevation='xlarge' pad='.5rem' round='.7rem'>
+				<Box
+					alignContent='center'
+					pad='19rem 5rem'
+					round='.5rem'
+					elevation='xlarge'
 				>
-					Create an account!
-				</span>
-			</div>
-		</div>
+						<div>NavBar</div>
+
+						<h1>PicMetric</h1>
+<div>
+						<form onSubmit={handleSubmit(onSubmit)}>
+							<label>Email</label>
+							<input
+								type='email'
+								name='email'
+								placeholder=''
+								ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+							/>
+							<ErrorMessage error={errors.email} />
+
+							<label>Password</label>
+							<input
+								type='password'
+								name='password'
+								placeholder=''
+								ref={register({ required: true })}
+							/>
+							<ErrorMessage error={errors.password} />
+
+							<input type='submit' value='Sign In' />
+							<div>{loginError}</div>
+						</form>
+						<div>
+							{'Not registered? '}
+							<span
+								style={{
+									cursor: 'pointer',
+									color: '#e11061',
+									textDecoration: 'underline'
+								}}
+								onClick={e => routerHistory.push('/register')}
+							>
+								Create an account!
+							</span>
+							</div>
+						</div>
+				</Box>
+			</Box>
+		</section>
 	);
 };
 

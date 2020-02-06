@@ -27,7 +27,9 @@ const Register = () => {
 				routerHistory.push('/login');
 			})
 			.catch(err => {
-				setRegisterError('Registration Error: ' + err.response.data.error.message);
+				setRegisterError(
+					'Registration Error: ' + err.response.data.error.message
+				);
 			});
 	};
 	console.log(errors);
