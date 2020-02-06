@@ -37,8 +37,14 @@ const PicMetric = () => {
     }
   }, [uploadData])
 
-  const handleDelete = itemId => {
-    console.log("Delete:", itemId);
+  const handleDelete = picId => {
+    axiosWithAuth()
+      .delete("/pics/" + picId)
+      .then(res =>  {
+        console.log("DELETE OK", res);
+        setUserPicInfo(userPicInfo.filter(i => i.id !== picId));
+      })
+      .catch(err => console.log("DELETE FAIL", err));
   }
 
   const handleAnalyze = () => {
