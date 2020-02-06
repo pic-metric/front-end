@@ -27,6 +27,7 @@ const fakeData = [
 const PicMetric = () => {
   const [imageInfo, setImageInfo] = useState();
   const [uploadData, setUploadData] = useState();
+  const userId = localStorage.getItem("USER_ID");
   
   useEffect(() => {
     setImageInfo(fakeData);
@@ -54,14 +55,14 @@ const PicMetric = () => {
     console.log("Delete:", itemId);
   }
 
-  const handleAnalyize = () => {
+  const handleAnalyze = () => {
     if (!uploadData) {
-      alert("Select a file before Analyize");
+      alert("Select a file before Analyze");
     }
-    console.log("Analyize:", uploadData);
+    console.log("Analyze:", uploadData);
 
     axiosWithAuth()
-      .post("/pics", uploadData, {
+      .post("/pics/" + userId, uploadData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -89,11 +90,11 @@ const PicMetric = () => {
             <path d="M26.29,29.29a1,1,0,0,0,1.41,1.41l8-8a1,1,0,0,0,0-1.41l-8-8a1,1,0,1,0-1.41,1.41L32.59,21H1a1,1,0,0,0,0,2H32.59ZM43,0H7A1,1,0,0,0,6,1V16a1,1,0,0,0,2,0V2H42V42H8V28a1,1,0,0,0-2,0V43a1,1,0,0,0,1,1H43a1,1,0,0,0,1-1V1A1,1,0,0,0,43,0Z"/>
           </svg>
         </div>
-        <input onClick={handleAnalyize} type="submit" value="Analyize" style={{ margin: "0px", width: "40%" }} />
-        <input type="file" id="imageUpload" onChange={handleImageChange} accept=".jpg,.png" style={{ display: "none" }} />
+        <input onClick={handleAnalyze} type="submit" value="Analyze" style={{ margin: "0px", width: "40%" }} />
+        <input type="file" id="imageUpload" name="pic" onChange={handleImageChange} accept=".jpg,.png" style={{ display: "none" }} />
       </div>
       <div style={{ textAlign: "center", marginTop: "5px" }}>
-        Select an image from your computer, then click Analyize.
+        Select an image from your computer, then click Analyze.
       </div>
       { 
         imageInfo.map(i => { return (

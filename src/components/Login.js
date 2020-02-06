@@ -16,6 +16,7 @@ const Login = () => {
     })
     .then(res => {
 			localStorage.setItem("USER_TOKEN", res.data.token);
+			localStorage.setItem("USER_ID", res.data.id);
 			routerHistory.push("/picmetric");
     })
     .catch(err => {
