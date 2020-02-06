@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Home = () => {
   const apiUrl = "https://bw-pic-metric.herokuapp.com/api";
@@ -11,8 +12,8 @@ const Home = () => {
     axios
       .post(apiUrl + "/auth/register", {
         full_name: "Asher Kobin",
-        email: "asher1@foo.com",
-        password: "tooManySecrets"
+        email: "asherkobin@gmail.com",
+        password: "asher"
       })
       .then(res => setMessage("registerUser OK"))
       .catch(err => {
@@ -23,8 +24,8 @@ const Home = () => {
   const loginUser = () => {
     axios
       .post(apiUrl + "/auth/login", {
-        email: "asher1@foo.com",
-        password: "tooManySecrets"
+        email: "asherkobin@gmail.com",
+        password: "asher"
       })
       .then(res => {
         setMessage("loginUser OK")
@@ -38,7 +39,7 @@ const Home = () => {
   const loginUserBadPwd = () => {
     axios
       .post(apiUrl + "/auth/login", {
-        email: "asher1@foo.com",
+        email: "asherkobin@gmail.com",
         password: "wrongPwd"
       })
       .then(res => {
@@ -63,8 +64,17 @@ const Home = () => {
       });
   }
 
+  const getUsers = () => {
+    axiosWithAuth().get("/users").then(res => console.log(res.data));
+  }
+
+  const getPic = () => {
+    axiosWithAuth().get("/pics/3").then(res => console.log(res.data));
+  }
+
   const deleteToken = () => {
     localStorage.removeItem("USER_TOKEN");
+    localStorage.removeItem("USER_ID");
     setMessage("Token Deleted");
   }
 
@@ -73,13 +83,24 @@ const Home = () => {
   }
 
   const tokenStatus = () => {
-    setMessage(localStorage.getItem("USER_TOKEN") ? "Token Exists" : "No Token");
+    setMessage(localStorage.getItem("USER_TOKEN") || localStorage.getItem("USER_ID") ? "Token Exists" : "No Token");
   }
 
   return (
     <div>
+      <style>
+        {
+         `button {
+            font-size: 30px;
+            display: block;
+            margin: 5px;
+          }`
+        }
+      </style>
       <button onClick={registerUser}>Test Register User</button>
       <button onClick={loginUser}>Test Login User</button>
+      <button onClick={getUsers}>Test Get Users</button>
+      <button onClick={getPic}>Test Get Pic</button>
       <button onClick={loginUserBadPwd}>Test Login User - Wrong Password</button>
       <button onClick={loginUserBadUser}>Test Login User - User Doesn't Exist</button>
       <button onClick={tokenStatus}>Token Status</button>
