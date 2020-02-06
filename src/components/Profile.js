@@ -4,25 +4,26 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 const Profile = () => {
   let userId = 0;
   const [loggedInUser, setLoggedInUser] = useState();
+  const [picCount, setPicCount] = useState();
   
   useEffect(() => {
     axiosWithAuth()
-      .get("/users")
+      .get("/users/" + userId)
       .then(res => {
-        setLoggedInUser(res.data.find(u => u.id === userId));
+        setLoggedInUser(res.data);
       })
       .catch(err => {
         console.log(err);
       });
 
-    // axiosWithAuth()
-    //   .get("/pics/for/" + userId)
-    //   .then(res => {
-    //     console.log(res.data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axiosWithAuth()
+      .get("/pics/for/" + userId)
+      .then(res => {
+        setPicCount(res.data.length);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, [userId]);
 
   userId = parseInt(localStorage.getItem("USER_ID"));
@@ -53,7 +54,7 @@ const Profile = () => {
         <label htmlFor="full_name">Name</label>
         <input type="text" value={loggedInUser.full_name} name="full_name" id="full_name" onChange={handleChange} />
         <label htmlFor="numPics">Image Count</label>
-        <div id="numPics">23</div> { /* TODO: Get Actual Count */ }
+        <div id="numPics">{picCount}</div>
         <input type="submit" value="Save Changes" />
       </form>
     </div>
