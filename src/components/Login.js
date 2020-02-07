@@ -20,7 +20,7 @@ const Login = () => {
 			routerHistory.push("/picmetric");
     })
     .catch(err => {
-      console.log("Login Error: " + err.response.data.error.message); // Michael: surface this in the UI
+      console.log("Login Error: " + err.response.data.error ? err.response.data.error.message : err); // Michael: surface this in the UI
     });
 	}
 	console.log(errors);
