@@ -1,36 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import PicMetricResult from "./PicMetricResult";
 
 const PicMetric = () => {
   const [userPicInfo, setUserPicInfo] = useState([]);
   const [uploadData, setUploadData] = useState();
   const userId = localStorage.getItem("USER_ID");
-  const baseUrl = "https://bw-pic-metric.herokuapp.com/api"
   
   useEffect(() => {
     axiosWithAuth()
       .get("/pics/for/" + userId)
-      .then(res => {
-        res.data.forEach(i => {
-          axiosWithAuth()
-            .get("/attributes/" + i.id)
-            .then(res => {
-              i.attributes = res.data.map(a => {
-                return {
-                  name: a.attribute,
-                  count: a.count,
-                  id: a.id
-                }
-              });
-              setUserPicInfo([...userPicInfo, i]);
-            });
-        })
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .then(res => setUserPicInfo(res.data))
+      .catch(err => { console.log(err); });
   }, [userId]);
-
 
   useEffect(() => {
     if (uploadData) {
@@ -50,7 +32,7 @@ const PicMetric = () => {
     }
   }, [uploadData])
 
-  const handleDelete = picId => {
+  const deleteItem = picId => {
     axiosWithAuth()
       .delete("/pics/" + picId)
       .then(res =>  {
@@ -101,21 +83,7 @@ const PicMetric = () => {
         Select an image from your computer, then click Analyze.
       </div>
       { 
-        userPicInfo.map(i => { return ( 
-          <div style={{ display: "flex", border: "1px solid black", marginTop: "10px", marginBottom: "10px", padding: "10px" }} key={i.id}>
-            <img src={baseUrl + "/pics/unprocessed/" + i.id} style={{ width: "450px", border: "1px solid black" }} />
-            <div style={{ display: "flex", flexDirection: "column", width: "100%", marginLeft: "10px" }}>
-              <div style={{ flexGrow: "1", marginBottom: "5px" }}>
-                {
-                  i.attributes.map(a => <div key={a.id}>{a.name} ({a.count})</div>)
-                }
-              </div>
-              <div>
-                <input onClick={() => handleDelete(i.id)} type="submit" value="Delete" style={{ margin: "0px", width: "100%" }} />
-              </div>
-            </div>
-          </div>
-        )})
+        userPicInfo.map(i => <PicMetricResult key={i.id} itemId={i.id} deleteItem={deleteItem} />)
       }
     </div>
   );
