@@ -1,15 +1,8 @@
-
-
 .loginCard {
 	display: flex;
 	justify-content: center;
 	min-width: 50rem;
 	margin-bottom: 5rem;
-}
-
-.loginForm {
-	width: 40rem;
-	margin: 0 auto;
 }
 
 .loginHeader {
@@ -18,4 +11,19 @@
 	font-weight: 100;
 	color: #000000;
 	font-family: 'Bebas Neue';
+	border-bottom: 0.1rem groove #e1106199;
 }
+
+.loginForm {
+	width: 40rem;
+	margin: 0 auto;
+	padding-bottom: 7rem;
+}
+
+
+.registerLink {
+	display: flex;
+	flex-direction: column;
+}
+
+

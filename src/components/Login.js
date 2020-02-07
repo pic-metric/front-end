@@ -32,46 +32,40 @@ const Login = () => {
 	return (
 		<div className='loginCard'>
 			<Box
-				margin='7rem 0 auto'
+				margin='7rem'
 				elevation='xlarge'
 				pad='.5rem'
 				round='.7rem'
-				overflow='hidden'
-				bac='red'
-
-				>
+				overflow='hidden'>
 			<Box
 				alignContent='center'
-				pad='17rem 3.2rem'
+				pad='18rem 3.3rem 4rem 3.3rem'
 				round='.5rem'
 				elevation='xlarge'
-					overflow='hidden'
-
-
-				>
+				overflow='hidden'>
 				<div className ='loginNavBar'>NavBar</div>
 				<h1 className='loginHeader'>PicMetric</h1>
 			<div>
 			<form className='loginForm' onSubmit={handleSubmit(onSubmit)}>
 				<label>Email</label>
-				<input
+				<input className='loginField'
 					type='email'
 					name='email'
 					placeholder=''
 					ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
 				<ErrorMessage error={errors.email} />
 				<label>Password</label>
-				<input
+				<input className='loginField'
 					type='password'
 					name='password'
 					placeholder=''
 					ref={register({ required: true })} />
 				<ErrorMessage error={errors.password} />
-				<input type='submit'
+				<input classname='loginSubmit' type='submit'
 				value='Sign In' />
 				<div>{loginError}</div>
 			</form>
-			<div>
+			<div className='registerLink'>
 				{ "Not registered? " }
 				<span style={{ cursor: "pointer", color: '#e1106199', textDecoration: "underline"}} onClick={ e => routerHistory.push("/register") }>
 				Create an account!
