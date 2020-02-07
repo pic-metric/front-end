@@ -53,7 +53,10 @@ const PicMetric = () => {
 
     axiosWithAuth()
       .post("/pics/" + userId, formData)
-      .then(res => console.log("uploadData OK", res))
+      .then(res => {
+        console.log("uploadData OK", res);
+        setUserPicInfo(res.data);
+      })
       .catch(err => console.log("uploadData FAIL", err));
   }
 
