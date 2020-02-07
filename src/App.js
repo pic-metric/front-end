@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import "./App.css";
 import { Grommet } from 'grommet';
-import Breakpoint from "react-socks";
+import { Breakpoint } from "react-socks";
 
 const App = () => {
     const theme = {
