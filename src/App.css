@@ -1,17 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
 .App {
 	height: 100%;
-	max-width: 54rem;
-	margin: 0 auto;
+	width: 100%;
 	color: #a9a9a9;
+	margin: 0 auto;
 }
 
 body {
 	background: #f3f2f2;
-	font-family: 'Helvetica Neue', 'Segoe UI', 'Ubuntu', sans-serif;
+	font-family: 'Segoe UI', sans-serif;
 }
 
 form {
-	max-width: 50rem;
+	width: 55rem;
 	margin: 0 auto;
 }
 
@@ -27,17 +33,6 @@ p {
 	color: #e11061;
 }
 
-input,label[type='button'] {
-	display: block;
-	box-sizing: border-box;
-	width: 100%;
-	font-size: 1.3rem;
-	padding: 1rem 1.2rem;
-	border-radius: 0.3rem;
-	border: 1px solid #a9a9a9;
-	margin-bottom: 1rem;
-}
-
 label {
 	text-align: left;
 	display: block;
@@ -49,7 +44,20 @@ label {
 	line-height: 2;
 }
 
-input[type='submit'],label[type='button'] {
+input,
+label[type='button'] {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	font-size: 1.3rem;
+	padding: 1rem 1.2rem;
+	border-radius: 0.3rem;
+	border: 1px solid #a9a9a9;
+	margin-bottom: 1rem;
+}
+
+input[type='submit'],
+label[type='button'] {
 	background: #bababa;
 	color: #ffffff;
 	border: none;
@@ -59,14 +67,29 @@ input[type='submit'],label[type='button'] {
 	font-weight: 100;
 	letter-spacing: 1rem;
 	text-transform: uppercase;
+	cursor: pointer;
 }
 
-input[type='submit']:hover,label[type='button']:hover {
+input[type='submit']:hover,
+label[type='button']:hover {
 	background: #e11061;
+	transition: 0.6s linear;
+	
 }
 
 label[type='button'] {
 	line-height: normal;
 	text-align: center;
 	margin-top: 0rem;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'] {
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: groove;
+	outline: none;
+	background: transparent;
 }
