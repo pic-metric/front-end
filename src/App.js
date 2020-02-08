@@ -27,8 +27,8 @@ const App = () => {
           <div className="App">
            <Switch>
             <Route path="/" exact><Home /></Route>
-            <Route path="/login">{/* <div>Navbar</div> */}<Login /></Route>
-            <Route path="/register">{/* <div>Navbar</div> */}<Register /></Route>
+            <Route path="/login" ><Login /></Route>
+            <Route path="/register"><Register /></Route>
             <PrivateRoute path="/profile"><div>Navbar</div><Profile /></PrivateRoute>
             <PrivateRoute path="/picmetric"><div>Navbar</div><PicMetric /></PrivateRoute>
            </Switch>

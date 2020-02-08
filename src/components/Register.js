@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Box } from 'grommet';
+import './Register.css'
+
 
 
 const Register = () => {
@@ -45,8 +47,7 @@ const Register = () => {
 
 	return (
 		<div>
-			<h1 classname='newUserRegister'>New User</h1>
-			<div className='RegisterCard'>
+			<div className='registerCard'>
 			<Box
 				margin='7rem'
 				elevation='xlarge'
@@ -59,8 +60,8 @@ const Register = () => {
 				round='.5rem'
 				elevation='xlarge'
 				overflow='hidden'>
-				<div className ='RegisterNavBar'>NavBar</div>
-				<h1 className='RegisterHeader'>PicMetric</h1>
+				<div className ='registerNavBar'>NavBar</div>
+				<h1 className='registerHeader'>PicMetric</h1>
 			<div>
 			<form className='registerForm' onSubmit={handleSubmit(onSubmit)}>
 				<label></label>
@@ -112,7 +113,7 @@ const Register = () => {
 				/>
 				{errors.repeatPassword && <p>{errors.repeatPassword.message}</p>}
 
-				<input type='submit' className='RegisterButton'
+				<input type='submit' className='registerButton'
 					   value='Sign Up'/>
 				<div>{RegisterError}</div>
 							</form>

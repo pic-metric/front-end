@@ -1,21 +1,60 @@
 .loginCard {
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	min-width: 70rem;
 	margin-bottom: 4rem;
+	background: #77ff00;
+	transition: 0.8s;
+}
+
+.loginCard:hover {
+	background: #ff77ff;
+}
+
+.loginCard:active {
+	transform: translate(0, -2rem);
+}
+
+.loginCard:hover:active {
+	background: #090909;
+}
+
+.loginBox {
+	width: 48rem;
+	height: 73rem;
+	background: #f3f2f2;
+	transition: 2s;
+}
+
+.loginBox:hover {
+	width: 77rem;
+	height: 79rem;
+	background: #090909;
+	box-shadow: 0rem 13rem 13rem 0rem rgba(0, 0, 0, 0.88);
+}
+
+.loginBoxInner {
+	width: 48rem;
+	height: 73rem;
+	transition: 2s;
+}
+
+.loginBoxInner:hover {
+	width: 77rem;
+	height: 79rem;
+	opacity: 0.999;
 }
 
 .loginHeader {
 	display: flex;
 	justify-content: left;
+	position: relative;
 	font-size: 4.5rem;
 	color: #000000;
 	border-bottom: 0.1rem groove #8e94f2;
 	padding: 2rem 0 1.1rem;
-}
-
-.loginHeader {
-	position: relative;
+	transition: 2s linear;
 }
 
 .loginHeader:after {
@@ -40,94 +79,18 @@
 	min-width: 40rem;
 	margin: 0 auto;
 	padding-bottom: 7rem;
+	transition: 1.7s;
+}
+
+.loginForm:hover {
+	width: 59rem;
 }
 
 .registerLink {
 	font-size: 1.5rem;
+	margin-bottom: 5rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	transition: 2s;
 }
-
-/* //leftovers// */
-
-/* 
-input[type='email'],
-input[type='password'],
-input[type='text'] {
-	position: relative;
-}
-
-
-input[type='email']:before,
-input[type='password']:before,
-input[type='text']:before {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 2px;
-	bottom: 0;
-	left: 0;
-	background-color: #000;
-	visibility: hidden;
-	-webkit-transform: scaleX(0);
-	transform: scaleX(0);
-	-webkit-transition: all 0.3s ease-in-out 0s;
-	transition: all 0.3s ease-in-out 0s;
-
-
-}
-
-input[type='email']:focus:after,
-input[type='password']:focus:after,
-input[type='text']:focus:after {
-	visibility: visible;
-	-webkit-transform: scaleX(1);
-	transform: scaleX(1);
-
-} */
-
-/* content: '';
-	width: 100%;
-	height: .1rem;
-	bottom: .0;
-	left: 0;
-	background-color: #8e94f2;
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition:  0.5s linear;
-	transition:  0.5s linear; */
-
-/*
-input[type='email']:focus,
-input[type='password']:focus,
-input[type='text']:focus {
-	color: #8e94f2;
-}
-
-
-input[type='email']:before ,
-input[type='password']:before ,
-input[type='text']:before {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 2px;
-	bottom: 0;
-	left: 0;
-	background-color: #8e94f2;
-	visibility: hidden;
-	-webkit-transform: scaleX(0);
-	transform: scaleX(0);
-	-webkit-transition: all 0.3s ease-in-out 0s;
-	transition: all 0.3s ease-in-out 0s;
-  }
-
-  input[type='email']:focus:after,
-input[type='password']:focus:after,
-input[type='text']:focus:after {
-	visibility: visible;
-	-webkit-transform: scaleX(1);
-	transform: scaleX(1);
-  }
- */

@@ -26,14 +26,14 @@ form {
 h1 {
 	color: #a9a9a9;
 	text-align: center;
-	padding-bottom: 1.3rem;
+	padding-bottom: 1rem;
 	border-bottom: 0.1rem solid;
 }
 
 p {
 	color: #e11061;
-	font-size: 1.45rem;
-	letter-spacing: 0.07rem;
+	font-size: 1.25rem;
+	letter-spacing: 0.055rem;
 }
 
 label {
@@ -50,7 +50,8 @@ input,
 label[type='button'] {
 	display: block;
 	width: 100%;
-	font-size: 2rem;
+	font-size: 1.85rem;
+	letter-spacing: 0.09rem;
 	padding: 0.4rem;
 	border-radius: 0.3rem;
 	border: 0.1rem solid #a9a9a9;
@@ -69,13 +70,13 @@ label[type='button'] {
 	line-height: 3.1rem;
 	text-transform: uppercase;
 	cursor: pointer;
+	transition: 0.45s linear;
 }
 
 input[type='submit']:hover,
 label[type='button']:hover {
 	background: #e11061;
-	box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.18);
-	transition: 0.4s linear;
+	box-shadow: 0 3rem 3rem 0 rgba(50, 50, 50, 0.44);
 }
 
 label[type='button'] {
@@ -92,16 +93,19 @@ input[type='text'] {
 	background: transparent;
 	color: #8e94f2;
 	outline: transparent;
+	transition: 0.5s linear;
 }
 
 input[type='email']:focus,
 input[type='password']:focus,
 input[type='text']:focus {
-	border-bottom: #77ffb2 groove 0.1rem;
-	transition: 0.5s linear ease-in-out;
+	border-bottom: #77ff00 groove 0.1rem;
 }
 
+input::-webkit-input-placeholder {
+	transition: 0.5s linear;
+	opacity: 0.66;
+}
 input:focus::-webkit-input-placeholder {
 	color: transparent;
-	transition: 0.5s;
 }

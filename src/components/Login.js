@@ -31,20 +31,22 @@ const Login = () => {
 
 	return (
 		<div className='loginCard'>
-			<Box
-				margin='7rem'
+			<Box className='loginBox'
+				margin='6rem'
 				elevation='xlarge'
 				pad='.5rem'
 				round='.7rem'
-				overflow='hidden'>
-			<Box
+				overflow='hidden'
+			>
+				<div className ='loginNavBar'>NavBar</div>
+			<Box className='loginBoxInner'
 				alignContent='center'
-				pad='18rem 3.3rem 4rem 3.3rem'
+				pad='10rem 3.3rem 4rem 3.3rem'
 				round='.5rem'
 				elevation='xlarge'
-				overflow='hidden'>
-				<div className ='loginNavBar'>NavBar</div>
-				<h1 className='loginHeader'>PicMetric</h1>
+					overflow='hidden'>
+					
+					<h1 className='loginHeader'>PicMetric</h1>
 			<div>
 			<form className='loginForm' onSubmit={handleSubmit(onSubmit)}>
 				<label></label>
@@ -61,20 +63,22 @@ const Login = () => {
 					placeholder='Password'
 					ref={register({ required: true })} />
 				<ErrorMessage error={errors.password} />
-				<input 
-					type='submit' className='loginButton'
+				<input
+					type='submit'
 					value='Sign In' />
 				<div>{loginError}</div>
 			</form>
+		
+			</div>
+				</Box>
+				
+			</Box>
 			<div className='registerLink'>
 				{ 'Not registered?' }
 				<span style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', fontSize: '1.8rem', color: '#e1106199', textDecoration: 'underline'}} onClick={ e => routerHistory.push('/register') }>
 				Create an account
         		</span>
 			</div>
-			</div>
-		</Box>
-		</Box>
 	</div>
 	);
 };

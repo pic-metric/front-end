@@ -71,7 +71,7 @@ const PicMetric = () => {
     <div>
       <div style={{ display: "flex", marginTop: "10px", justifyContent: "space-between", alignItems: "center" }}>        
         <label type="button" htmlFor="imageUpload" style={{ width: "40%", margin: "0px" }}>Select</label>
-        <div style={{ width: "50px", height: "50px" }}>  
+        <div style={{ width: "5rem", height: "5rem" }}>  
           <svg id="uploadIcon" viewBox="0 0 44 44" style={ !uploadData ? { fill: "red" } : { fill: "green" }}>
             <path d="M26.29,29.29a1,1,0,0,0,1.41,1.41l8-8a1,1,0,0,0,0-1.41l-8-8a1,1,0,1,0-1.41,1.41L32.59,21H1a1,1,0,0,0,0,2H32.59ZM43,0H7A1,1,0,0,0,6,1V16a1,1,0,0,0,2,0V2H42V42H8V28a1,1,0,0,0-2,0V43a1,1,0,0,0,1,1H43a1,1,0,0,0,1-1V1A1,1,0,0,0,43,0Z"/>
           </svg>
