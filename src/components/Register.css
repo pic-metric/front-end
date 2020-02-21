@@ -1,0 +1,50 @@
+.registerCard {
+	display: flex;
+	justify-content: center;
+	min-width: 70rem;
+	margin-bottom: 4rem;
+}
+
+.registerHeader {
+	display: flex;
+	justify-content: left;
+	font-size: 4.5rem;
+	color: #000000;
+	border-bottom: 0.1rem groove #8e94f2;
+	padding: 2rem 0 1.1rem;
+}
+
+.registerHeader {
+	position: relative;
+}
+
+.registerHeader:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0.3rem;
+	bottom: 0;
+	right: 0;
+	background: #8e94f2;
+	transition: width 0.4s linear;
+	-webkit-transition: width 0.5s ease-in-out;
+}
+
+.registerHeader:hover:after {
+	width: 100%;
+	left: 0;
+}
+
+.registerForm {
+	width: 40rem;
+	min-width: 40rem;
+	margin: 0 auto;
+	padding-bottom: 7rem;
+}
+
+.loginLink {
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

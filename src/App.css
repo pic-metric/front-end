@@ -1,72 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+* {
+	box-sizing: border-box;
+	font-family: 'Bebas Neue';
+}
+
 .App {
 	height: 100%;
-	max-width: 54rem;
-	margin: 0 auto;
+	width: 100%;
 	color: #a9a9a9;
+	margin: 0 auto;
+	font-size: 1.7rem;
+	font-weight: 100;
 }
 
 body {
 	background: #f3f2f2;
-	font-family: 'Helvetica Neue', 'Segoe UI', 'Ubuntu', sans-serif;
 }
 
 form {
-	max-width: 50rem;
+	width: 55rem;
 	margin: 0 auto;
 }
 
 h1 {
 	color: #a9a9a9;
 	text-align: center;
-	padding-bottom: 1.3rem;
+	padding-bottom: 1rem;
 	border-bottom: 0.1rem solid;
-	font-weight: 100;
 }
 
 p {
 	color: #e11061;
-}
-
-input,label[type='button'] {
-	display: block;
-	box-sizing: border-box;
-	width: 100%;
-	font-size: 1.3rem;
-	padding: 1rem 1.2rem;
-	border-radius: 0.3rem;
-	border: 1px solid #a9a9a9;
-	margin-bottom: 1rem;
+	font-size: 1.25rem;
+	letter-spacing: 0.055rem;
 }
 
 label {
 	text-align: left;
 	display: block;
-	margin-bottom: 1.3rem;
-	margin-top: 1.8rem;
+	margin-bottom: 0.8rem;
+	margin-top: 3rem;
 	color: #6e6e6e;
-	font-size: 1.3rem;
-	font-weight: 100;
-	line-height: 2;
+	font-size: 1.6rem;
+	line-height: 1.1;
 }
 
-input[type='submit'],label[type='button'] {
-	background: #bababa;
+input,
+label[type='button'] {
+	display: block;
+	width: 100%;
+	font-size: 1.85rem;
+	letter-spacing: 0.09rem;
+	padding: 0.4rem;
+	border-radius: 0.3rem;
+	border: 0.1rem solid #a9a9a9;
+}
+
+input[type='submit'],
+label[type='button'] {
+	background: #090909;
 	color: #ffffff;
-	border: none;
-	margin-top: 3.8rem;
+	border: transparent;
+	border-radius: 0.35rem;
+	margin-top: 7rem;
 	padding: 2rem;
-	font-size: 1.5rem;
-	font-weight: 100;
+	font-size: 2rem;
 	letter-spacing: 1rem;
+	line-height: 3.1rem;
 	text-transform: uppercase;
+	cursor: pointer;
+	transition: 0.45s linear;
 }
 
-input[type='submit']:hover,label[type='button']:hover {
+input[type='submit']:hover,
+label[type='button']:hover {
 	background: #e11061;
+	box-shadow: 0 3rem 3rem 0 rgba(50, 50, 50, 0.44);
 }
 
 label[type='button'] {
-	line-height: normal;
 	text-align: center;
-	margin-top: 0rem;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'] {
+	border: hidden;
+	border-bottom: #bababa55 groove 0.1rem;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	background: transparent;
+	color: #8e94f2;
+	outline: transparent;
+	transition: 0.5s linear;
+}
+
+input[type='email']:focus,
+input[type='password']:focus,
+input[type='text']:focus {
+	border-bottom: #77ff00 groove 0.1rem;
+}
+
+input::-webkit-input-placeholder {
+	transition: 0.5s linear;
+	opacity: 0.66;
+}
+input:focus::-webkit-input-placeholder {
+	color: transparent;
 }
